@@ -1,0 +1,90 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Outfit', Helvetica, Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    background-color: hsl(212, 45%, 89%);
+    transition: background-color 0.5s;
+}
+h1 {
+    font-weight: 700;
+    font-size: 1.3em;
+}
+p {
+    font-size: 0.9em;
+    font-weight: 400;
+    color: hsl(220, 15%, 55%);
+}
+button {
+    background-color: white;
+    border-radius: 15px;
+    border-style: none;
+}
+
+button:hover {
+    box-shadow: 0px 2px 2px 0px hsl(212, 45%, 80%);
+}
+
+.square {
+    background-color: white;
+}
+
+.main-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    width: 22rem;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 20px 0px hsl(212, 45%, 80%);
+}
+.text {
+    background-color: white;
+    width: 100%;
+    min-height: 4rem;
+    padding: 10px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.controls {
+    padding: 0.2rem;
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 20rem;
+    height: 20rem;
+    margin: 1rem;
+    background-color: whitesmoke;
+}
+
+.square:hover {
+    background-color: gray;
+}
+
+.changed {
+    background-color: black;
+}
+.attribution {
+    position: absolute;
+    bottom: 5px; 
+    right: 5px;
+    font-size: 11px;
+}
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
