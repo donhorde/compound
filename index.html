@@ -10,6 +10,8 @@
     <div class="main-box">
       <div class="graph-container"></div>
       <div class="controls">
+        <label for="initial-balance">Initial balance (USD)</label>
+        <input type="number" id="initial-balance" value="5000" min="0">
         <label for="monthly-contribution">Monthly contribution (USD)</label>
         <input type="number" id="monthly-contribution" value="1000" min="0">
         <label for="duration">Duration (months)</label>
@@ -21,7 +23,7 @@
           <option value="monthly">Monthly</option>
           <option value="yearly">Yearly</option>
         </select>
-        <button id="create-chart">Create chart</button>
+        <button id="create-graph">Create graph</button>
       </div>
     <div class="attribution">
       Coded by <a href="https://github.com/donhorde">Don Horde</a>.
