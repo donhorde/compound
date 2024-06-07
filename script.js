@@ -27,6 +27,7 @@ const inputValues = {
     },
 
     getResult: function() {
+        this.refresh();
         
         /* 
         this.result = 0;
@@ -37,9 +38,18 @@ const inputValues = {
             this.balance = this.result;
           }
         } */
-        this.refresh();
-        //formula ver 2 - not correct:
-        // this.result = this.balance * Math.pow((1 + this.interest), this.duration) + (this.contribution * (Math.pow((1 + this.interest), this.duration) - 1)/this.interest)*(1 + this.interest);
+
+        //formula ver 2 - with yearly contributions:
+            /*
+            P = Initial Amount (this.balance)
+            i = yearly interest rate (this.interest)
+            A = yearly contribution or deposit added. (this.contribution)
+            n = the deposits will be made for X consecutive years. (this.duration)
+            F = final amount obtained. (this.result)
+                (P+A/i)(1+i)^n − A/i
+            */
+            this.result = (this.balance+(this.contribution/this.interest)) * Math.pow((1 + this.interest), this.duration) - this.contribution/this.interest;
+            // this.result = this.balance * Math.pow((1 + this.interest), this.duration) + (this.contribution * (Math.pow((1 + this.interest), this.duration) - 1)/this.interest)*(1 + this.interest);
         
         //formula ver 3: - does not account for contributions
         /*
@@ -50,17 +60,9 @@ const inputValues = {
                 t = compounded periods per year 
                 n = number of years
         */
-        this.result = this.balance * Math.pow((1 + (this.interest/this.duration)), (this.duration*12));
+        // this.result = this.balance * Math.pow((1 + (this.interest/this.duration)), (this.duration*12));
         return this.result;
     },
-    
-    /*
-    P = Initial Amount
-    i = yearly interest rate
-    A = yearly contribution or deposit added.
-    n = the deposits will be made for 10 consecutive years.
-    F = final amount obtained.    
-    */
 
     getValues: function() {
         this.refresh();
