@@ -38,7 +38,19 @@ const inputValues = {
           }
         } */
         this.refresh();
-        this.result = this.balance * Math.pow((1 + this.interest), this.duration) + (this.contribution * (Math.pow((1 + this.interest), this.duration) - 1)/this.interest)*(1 + this.interest);
+        //formula ver 2 - not correct:
+        // this.result = this.balance * Math.pow((1 + this.interest), this.duration) + (this.contribution * (Math.pow((1 + this.interest), this.duration) - 1)/this.interest)*(1 + this.interest);
+        
+        //formula ver 3:
+        /*
+            Amount = P ( 1 + r/n )^nt
+
+                P = initial investment; 
+                r = interest rate 
+                t = compounded periods per year 
+                n = number of years
+        */
+        this.result = this.balance * Math.pow((1 + (this.interest/this.duration)), (this.duration*12));
         return this.result;
     },
     
