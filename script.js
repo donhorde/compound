@@ -41,7 +41,7 @@ const inputValues = {
         //formula ver 2 - not correct:
         // this.result = this.balance * Math.pow((1 + this.interest), this.duration) + (this.contribution * (Math.pow((1 + this.interest), this.duration) - 1)/this.interest)*(1 + this.interest);
         
-        //formula ver 3:
+        //formula ver 3: - does not account for contributions
         /*
             Amount = P ( 1 + r/n )^nt
 
