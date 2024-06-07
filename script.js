@@ -22,12 +22,13 @@ const inputValues = {
         this.balance = Number(balanceField.value);
         this.duration = Number(durationField.value);
         this.contribution = Number(contributionField.value);
-        this.interest = Number(interestField.value);
+        this.interest = Number(interestField.value)/100;
         this.interval = intervalField.value;
-        this.getResult();
     },
 
     getResult: function() {
+        
+        /* 
         this.result = 0;
         if (this.interval === "monthly") {
         for (let i = 0; i<this.duration; i++) {
@@ -35,8 +36,19 @@ const inputValues = {
             this.result = this.balance + (this.balance * (this.interest / 100));
             this.balance = this.result;
           }
-        }
+        } */
+        this.refresh();
+        this.result = this.balance * Math.pow((1 + this.interest), this.duration) + (this.contribution * (Math.pow((1 + this.interest), this.duration) - 1)/this.interest)*(1 + this.interest);
+        return this.result;
     },
+    
+    /*
+    P = Initial Amount
+    i = yearly interest rate
+    A = yearly contribution or deposit added.
+    n = the deposits will be made for 10 consecutive years.
+    F = final amount obtained.    
+    */
 
     getValues: function() {
         this.refresh();
@@ -68,7 +80,7 @@ function createGraph() {
     for (let i = 1; i <= bars; i++) {
         createDiv();
     };
-    console.log(inputValues.result);
+    console.log(inputValues.getResult());
 }
 
 function createDiv() {
