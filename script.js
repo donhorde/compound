@@ -72,8 +72,8 @@ const inputValues = {
 };
 
 window.onload = () => {
-    inputValues.refresh();
-    showResult();
+    inputValues.getResult();
+    createGraph();
 }
 // controls.addEventListener('change', () => inputValues.refresh());
 
@@ -99,6 +99,7 @@ function createGraph() {
         createDiv();
     };
     console.log(inputValues.getResult());
+    showResult();
 }
 
 function createDiv() {
