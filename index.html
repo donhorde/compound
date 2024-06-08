@@ -8,6 +8,10 @@
   
   <body>
     <div class="main-box">
+      <div class="result-text">
+        <h1>Your final savings:</h1>
+        <h1>$0.00</h1>
+      </div>
       <div class="graph-container"></div>
       <div class="controls">
         <label for="initial-balance">Initial balance (USD)</label>
@@ -20,8 +24,8 @@
         <input type="number" id="interest" value="5" min="0">
         <label for="interest-interval">Interest interval</label>
         <select id="interest-interval">
-          <option value="monthly">Monthly</option>
           <option value="yearly">Yearly</option>
+          <option value="monthly" disabled>Monthly</option>
         </select>
         <button id="create-graph">Create graph</button>
       </div>

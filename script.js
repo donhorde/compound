@@ -84,13 +84,13 @@ function resetGraph() {
 function createGraph() {
     resetGraph();
     inputValues.refresh();
-    let bars = 0;
-    let months = inputValues.duration;
+    let bars = inputValues.duration;
+    /* let months = inputValues.duration;
     if (months % 12 === 0) {
         bars = months/12;
     } else {
         bars = months;
-    };
+    }; */
     for (let i = 1; i <= bars; i++) {
         createDiv();
     };
