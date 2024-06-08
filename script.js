@@ -6,6 +6,7 @@ const contributionField = document.getElementById('monthly-contribution');
 const interestField = document.getElementById('interest');
 const intervalField = document.getElementById('interest-interval');
 
+const resultText = document.getElementById('result-value');
 const graphContainer = document.querySelector('.graph-container');
 const controls = document.querySelector('.controls');
 
@@ -70,7 +71,10 @@ const inputValues = {
     },
 };
 
-window.onload = () => inputValues.refresh();
+window.onload = () => {
+    inputValues.refresh();
+    showResult();
+}
 // controls.addEventListener('change', () => inputValues.refresh());
 
 createBtn.addEventListener('click', () => createGraph());
@@ -102,6 +106,11 @@ function createDiv() {
     newDiv.classList.add('bar');
     graphContainer.appendChild(newDiv);
 }
+
+function showResult() {
+    let roundedResult = (Number.parseInt(inputValues.result * 10))/10; //round to 2 decimals
+    resultText.textContent = `\$${roundedResult}`;
+};
 
 /* function calculateFinal(balance, duration, contribution, interest, interval) {
     let result = 0;
