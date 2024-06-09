@@ -27,7 +27,7 @@ const inputValues = {
         this.interval = intervalField.value;
     },
 
-    getResult: function() {
+    getResult: function(year) {
         this.refresh();
         
         /* 
@@ -49,7 +49,13 @@ const inputValues = {
             F = final amount obtained. (this.result)
                 (P+A/i)(1+i)^n − A/i
             */
-            this.result = (this.balance+(this.contribution/this.interest)) * Math.pow((1 + this.interest), this.duration) - this.contribution/this.interest;
+
+            // reworked to return the result for individual years; year 0 = no interest added, initial balance only
+            if(year===0) {
+                this.result = this.balance;
+            } else {
+                this.result = (this.balance+(this.contribution/this.interest)) * Math.pow((1 + this.interest), year) - this.contribution/this.interest;
+            };
             // this.result = this.balance * Math.pow((1 + this.interest), this.duration) + (this.contribution * (Math.pow((1 + this.interest), this.duration) - 1)/this.interest)*(1 + this.interest);
         
         //formula ver 3: - does not account for contributions
@@ -95,10 +101,10 @@ function createGraph() {
     } else {
         bars = months;
     }; */
-    for (let i = 1; i <= bars; i++) {
+    for (let i = 0; i <= bars; i++) {
         createDiv();
+        console.log(`year ${i}: ${inputValues.getResult(i)}`);
     };
-    console.log(inputValues.getResult());
     showResult();
 }
 
@@ -112,6 +118,8 @@ function showResult() {
     let roundedResult = (Number.parseInt(inputValues.result * 10))/10; //round to 2 decimals
     resultText.textContent = `\$${roundedResult}`;
 };
+
+
 
 /* function calculateFinal(balance, duration, contribution, interest, interval) {
     let result = 0;
