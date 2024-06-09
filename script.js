@@ -75,12 +75,7 @@ function createGraph() {
     resetGraph();
     inputValues.refresh();
     let bars = inputValues.duration;
-    /* let months = inputValues.duration;
-    if (months % 12 === 0) {
-        bars = months/12;
-    } else {
-        bars = months;
-    }; */
+    
     for (let i = 0; i <= bars; i++) {
         createDiv();
         console.log(`year ${i}: ${inputValues.getResult(i)}`);
