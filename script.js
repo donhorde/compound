@@ -77,20 +77,20 @@ function createGraph() {
     let bars = inputValues.duration;
     
     for (let i = 0; i <= bars; i++) {
-        createDiv();
+        createBar();
         console.log(`year ${i}: ${inputValues.getResult(i)}`);
     };
     showResult();
 }
 
-function createDiv() {
+function createBar() {
     const newDiv = document.createElement('div');
     newDiv.classList.add('bar');
     graphContainer.appendChild(newDiv);
 }
 
 function showResult() {
-    let roundedResult = (Number.parseInt(inputValues.result * 10))/10; //round to 2 decimals
+    let roundedResult = (Number.parseInt(inputValues.result * 100))/100; //round to 2 decimals
     resultText.textContent = `\$${roundedResult}`;
 };
 
