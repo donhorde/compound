@@ -29,16 +29,6 @@ const inputValues = {
 
     getResult: function(year) {
         this.refresh();
-        
-        /* 
-        this.result = 0;
-        if (this.interval === "monthly") {
-        for (let i = 0; i<this.duration; i++) {
-            this.balance = this.balance + this.contribution;
-            this.result = this.balance + (this.balance * (this.interest / 100));
-            this.balance = this.result;
-          }
-        } */
 
         //formula ver 2 - with yearly contributions:
             /*
@@ -58,16 +48,6 @@ const inputValues = {
             };
             // this.result = this.balance * Math.pow((1 + this.interest), this.duration) + (this.contribution * (Math.pow((1 + this.interest), this.duration) - 1)/this.interest)*(1 + this.interest);
         
-        //formula ver 3: - does not account for contributions
-        /*
-            Amount = P ( 1 + r/n )^nt
-
-                P = initial investment; 
-                r = interest rate 
-                t = compounded periods per year 
-                n = number of years
-        */
-        // this.result = this.balance * Math.pow((1 + (this.interest/this.duration)), (this.duration*12));
         return this.result;
     },
 
