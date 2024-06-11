@@ -79,14 +79,13 @@ function createGraph() {
     
     for (let i = 0; i <= bars; i++) {
         createBar(i);
-        console.log(`year ${i}: ${inputValues.getResult(i)}`);
+        //console.log(`year ${i}: ${inputValues.getResult(i)}`);
         barValues.push(inputValues.getResult(i));
     };
     for (let i = 0; i <= bars; i++) {
         setBarHeight(i, barValues);
     };
 
-    console.log(barValues);
     showResult();
 }
 
@@ -99,10 +98,9 @@ function createBar(index) {
 
 function setBarHeight(index, values) {
     let bar = document.getElementById(`bar-${index}`);
-    bar.setAttribute('style', `height: ${(values[index]/values[values.length-1])*100}%`);
+    //height = percentage of last element, rounded to 2 decimals
+    bar.setAttribute('style', `height: ${(Math.round((values[index]/values[values.length-1])*10000))/100}%`);
 }
-
-// od prvního k poslednímu: vybrat bar, nastavit mu style: height na ((aktuální hodnota / hodnota nejvyššího) %), další bar
 
 function showResult() {
     let roundedResult = (Number.parseInt(inputValues.result * 100))/100; //round to 2 decimals
