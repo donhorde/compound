@@ -83,7 +83,7 @@ function createGraph() {
         barValues.push(inputValues.getResult(i));
     };
     for (let i = 0; i <= bars; i++) {
-        setBarHeight(i, barValues);
+        setBarParams(i, barValues);
     };
 
     showResult();
@@ -105,10 +105,13 @@ function createBar(index) {
     graphContainer.appendChild(newDiv);
 }
 
-function setBarHeight(index, values) {
+function setBarParams(index, values) {
     let bar = document.getElementById(`bar-${index}`);
     //height = percentage of last element, rounded to 2 decimals
     bar.setAttribute('style', `height: ${(Math.round((values[index]/values[values.length-1])*10000))/100}%`);
+
+    let infobox = document.getElementById(`tooltip-${index}`); //named infobox here to prevent any possible collisions
+    infobox.textContent = `Year ${index}, balance: \$${Math.round(values[index])}`;
 }
 
 function showResult() {
