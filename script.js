@@ -90,9 +90,18 @@ function createGraph() {
 }
 
 function createBar(index) {
+    //create the bar
     const newDiv = document.createElement('div');
     newDiv.classList.add('bar');
     newDiv.setAttribute('id', `bar-${index}`);
+
+    //add info tooltip
+    const tooltip = document.createElement('div');
+    tooltip.classList.add('tooltiptext');
+    tooltip.setAttribute('id', `tooltip-${index}`);
+
+    newDiv.appendChild(tooltip);
+
     graphContainer.appendChild(newDiv);
 }
 

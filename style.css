@@ -95,13 +95,28 @@ button:hover {
     background-color: whitesmoke;
 }
 
-.square:hover {
-    background-color: gray;
+/* .tooltip {
+    position: relative;
+    display: inline-block;
+} */
+  
+.bar .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    position: absolute;
+    z-index: 1;
 }
 
-.changed {
-    background-color: black;
-}
+.bar:hover .tooltiptext {
+    visibility: visible;
+  }
+
 .attribution {
     position: absolute;
     bottom: 5px; 
