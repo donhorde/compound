@@ -53,6 +53,10 @@ button:hover {
     background-color: aquamarine;
 }
 
+.bar:hover {
+    background-color: aqua;
+}
+
 .main-box {
     display: flex;
     justify-content: center;
