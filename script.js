@@ -74,7 +74,7 @@ function resetGraph() {
 function createGraph() {
     resetGraph();
     inputValues.refresh();
-    let bars = inputValues.duration;
+    let bars = inputValues.duration; //as many bars as years + year 0
     let barValues = [];
     
     for (let i = 0; i <= bars; i++) {
@@ -108,7 +108,7 @@ function createBar(index) {
 function setBarParams(index, values) {
     let bar = document.getElementById(`bar-${index}`);
     //height = percentage of last element, rounded to 2 decimals
-    bar.setAttribute('style', `height: ${(Math.round((values[index]/values[values.length-1])*10000))/100}%`);
+    window.setTimeout(() => {bar.setAttribute('style', `height: ${(Math.round((values[index]/values[values.length-1])*10000))/100}%`)}, 0);
 
     let infobox = document.getElementById(`tooltip-${index}`); //named infobox here to prevent any possible collisions
     infobox.textContent = `Year ${index}, balance: \$${Math.round(values[index])}`;
