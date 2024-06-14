@@ -29,6 +29,11 @@ button:hover {
     box-shadow: 0px 2px 2px 0px hsl(212, 45%, 80%);
 }
 
+input:out-of-range {
+    border: 2px solid red;
+    color: red;
+}
+
 .result-text {
     padding: 0.5em;
 }

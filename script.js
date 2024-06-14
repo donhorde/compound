@@ -61,6 +61,11 @@ window.onload = () => {
     inputValues.getResult();
     createGraph();
 }
+
+/* function checkField(e) {
+    if (e.target.value >= e.target.)
+} */ //TBD
+
 // controls.addEventListener('change', () => inputValues.refresh());
 
 createBtn.addEventListener('click', () => createGraph());
