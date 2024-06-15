@@ -62,16 +62,15 @@ window.onload = () => {
     createGraph();
 }
 
-function checkField(e) {
-    /* if (!e.validity.valid) {
-        console.log(`${e} is invalid!`)
-    }; */
-    console.log(e.validity.valid);
+function checkField(target) {
+    if (!target.validity.valid) {
+        //console.log(`${target} is invalid!`);
+        createBtn.toggleAttribute('disabled');
+    };
+    //console.log(target.validity.valid);
 } //TBD
 
-controls.forEach(input => input.addEventListener('change', function(e) {
-    checkField(e.currentTarget);
-}));
+controls.forEach(input => input.addEventListener('change', e => checkField(e.currentTarget)));
 
 createBtn.addEventListener('click', () => createGraph());
 
@@ -118,7 +117,11 @@ function createBar(index) {
 function setBarParams(index, values) {
     let bar = document.getElementById(`bar-${index}`);
     //height = percentage of last element, rounded to 2 decimals
-    window.setTimeout(() => {bar.setAttribute('style', `height: ${(Math.round((values[index]/values[values.length-1])*10000))/100}%`)}, 0);
+    //set timeout to enable transition animation
+    window.setTimeout(() => {
+        bar.setAttribute('style', 
+        `height: ${(Math.round((values[index]/values[values.length-1])*10000))/100}%`)
+    }, 0); //perform with no delay
 
     let infobox = document.getElementById(`tooltip-${index}`); //named infobox here to prevent any possible collisions
     infobox.textContent = `Year ${index}, balance: \$${Math.round(values[index])}`;
