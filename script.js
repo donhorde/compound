@@ -8,7 +8,7 @@ const intervalField = document.getElementById('interest-interval');
 
 const resultText = document.getElementById('result-value');
 const graphContainer = document.querySelector('.graph-container');
-const controls = document.querySelector('.controls');
+const controls = document.querySelectorAll('input');
 
 const inputValues = {
     balance: 0,
@@ -62,11 +62,16 @@ window.onload = () => {
     createGraph();
 }
 
-/* function checkField(e) {
-    if (e.target.value >= e.target.)
-} */ //TBD
+function checkField(e) {
+    /* if (!e.validity.valid) {
+        console.log(`${e} is invalid!`)
+    }; */
+    console.log(e.validity.valid);
+} //TBD
 
-// controls.addEventListener('change', () => inputValues.refresh());
+controls.forEach(input => input.addEventListener('change', function(e) {
+    checkField(e.currentTarget);
+}));
 
 createBtn.addEventListener('click', () => createGraph());
 
