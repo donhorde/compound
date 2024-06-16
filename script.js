@@ -55,6 +55,18 @@ const inputValues = {
         this.refresh();
         return [this.balance, this.duration, this.contribution, this.interest, this.interval];
     },
+
+    checkInputs: function() {
+        controls.forEach(function() {
+            if(!this.validity.valid) { //currently throws error
+                createBtn.setAttribute('disabled');
+                window.focus(this);
+            };
+        })
+        //aim = to check if all inputs are valid; if an invalid input is encountered,
+        //disable createButton & shift focus to invalid element;
+        //if all inputs are valid, create graph
+    }
 };
 
 window.onload = () => {
@@ -66,11 +78,13 @@ function checkField(target) {
     if (!target.validity.valid) {
         //console.log(`${target} is invalid!`);
         createBtn.toggleAttribute('disabled');
+        createBtn.hasAttribute('disabled');
     };
     //console.log(target.validity.valid);
 } //TBD
 
-controls.forEach(input => input.addEventListener('change', e => checkField(e.currentTarget)));
+//controls.forEach(input => input.addEventListener('change', e => checkField(e.currentTarget)));
+//controls.forEach(input => input.addEventListener('change', () => inputValues.checkInputs())); //enable when function works properly
 
 createBtn.addEventListener('click', () => createGraph());
 
