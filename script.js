@@ -57,16 +57,27 @@ const inputValues = {
     },
 
     checkInputs: function() {
-        controls.forEach(function() {
-            if(!this.validity.valid) { //currently throws error
-                createBtn.setAttribute('disabled');
-                window.focus(this);
+        
+        /* controls.forEach(function(item) {
+            if(!item.validity.valid) {
+                createBtn.setAttribute('disabled', "");
+                item.focus({ focusVisible: true });
             };
-        })
+        }) */ //currently works, but need to find another way of disabling graph generation
+
+        //rework with every() (possible?) (TBD):
+
+        if (controls.every((item) => item.validity.valid)) {
+            console.log('all true')       
+            }
+        else {
+            createBtn.setAttribute('disabled', "");
+            }
+
         //aim = to check if all inputs are valid; if an invalid input is encountered,
         //disable createButton & shift focus to invalid element;
         //if all inputs are valid, create graph
-    }
+    },
 };
 
 window.onload = () => {
