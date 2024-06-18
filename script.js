@@ -2,7 +2,7 @@ const createBtn = document.getElementById('create-graph');
 
 const balanceField = document.getElementById('initial-balance');
 const durationField = document.getElementById('duration');
-const contributionField = document.getElementById('monthly-contribution');
+const contributionField = document.getElementById('yearly-contribution');
 const interestField = document.getElementById('interest');
 const intervalField = document.getElementById('interest-interval');
 
