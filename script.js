@@ -66,18 +66,39 @@ const inputValues = {
         }) */ //currently works, but need to find another way of disabling graph generation
 
         //rework with every() (possible?) (TBD):
+        const focusInvalidElement = element => {
+            //console.log(`${element} is invalid`);
+            element.focus({ focusVisible: true });
+            createBtn.setAttribute('disabled', "");
+        }
 
-        if (controls.every((item) => item.validity.valid)) {
+        if (![...controls].every((item) => item.validity.valid)) {
+            controls.forEach(function(item) {
+                if(!item.validity.valid) {
+                    focusInvalidElement(item);        
+                }
+            })
+            } else {
+                if (createBtn.hasAttribute('disabled')) {
+                    createBtn.removeAttribute('disabled');
+                }
+            }
+
+     /*    if ([...controls].every((item) => item.validity.valid)) {
             console.log('all true')       
             }
-        else {
-            createBtn.setAttribute('disabled', "");
-            }
+        else if (![...controls].forEach((item) => {
+                if (!item.validity.valid) {
+                        focusInvalid(item);
+                        return true;
+                    }
+                return true;
+            })) */ //does not work, needs reworking, possibly a dead end
 
         //aim = to check if all inputs are valid; if an invalid input is encountered,
         //disable createButton & shift focus to invalid element;
-        //if all inputs are valid, create graph
-    },
+        //if all inputs are valid, graph can be created
+    }
 };
 
 window.onload = () => {
@@ -95,7 +116,7 @@ function checkField(target) {
 } //TBD
 
 //controls.forEach(input => input.addEventListener('change', e => checkField(e.currentTarget)));
-//controls.forEach(input => input.addEventListener('change', () => inputValues.checkInputs())); //enable when function works properly
+controls.forEach(input => input.addEventListener('change', () => inputValues.checkInputs())); //enable when function works properly
 
 createBtn.addEventListener('click', () => createGraph());
 
