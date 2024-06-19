@@ -46,7 +46,6 @@ const inputValues = {
             } else {
                 this.result = (this.balance+(this.contribution/this.interest)) * Math.pow((1 + this.interest), year) - this.contribution/this.interest;
             };
-            // this.result = this.balance * Math.pow((1 + this.interest), this.duration) + (this.contribution * (Math.pow((1 + this.interest), this.duration) - 1)/this.interest)*(1 + this.interest);
         
         return this.result;
     },
@@ -58,42 +57,22 @@ const inputValues = {
 
     checkInputs: function() {
         
-        /* controls.forEach(function(item) {
-            if(!item.validity.valid) {
-                createBtn.setAttribute('disabled', "");
-                item.focus({ focusVisible: true });
-            };
-        }) */ //currently works, but need to find another way of disabling graph generation
-
-        //rework with every() (possible?) (TBD):
         const focusInvalidElement = element => {
-            //console.log(`${element} is invalid`);
             element.focus({ focusVisible: true });
             createBtn.setAttribute('disabled', "");
-        }
+        };
 
         if (![...controls].every((item) => item.validity.valid)) {
             controls.forEach(function(item) {
                 if(!item.validity.valid) {
                     focusInvalidElement(item);        
-                }
+                };
             })
             } else {
                 if (createBtn.hasAttribute('disabled')) {
                     createBtn.removeAttribute('disabled');
                 }
-            }
-
-     /*    if ([...controls].every((item) => item.validity.valid)) {
-            console.log('all true')       
-            }
-        else if (![...controls].forEach((item) => {
-                if (!item.validity.valid) {
-                        focusInvalid(item);
-                        return true;
-                    }
-                return true;
-            })) */ //does not work, needs reworking, possibly a dead end
+            };
 
         //aim = to check if all inputs are valid; if an invalid input is encountered,
         //disable createButton & shift focus to invalid element;
@@ -104,16 +83,14 @@ const inputValues = {
 window.onload = () => {
     inputValues.getResult();
     createGraph();
-}
+};
 
 function checkField(target) {
     if (!target.validity.valid) {
-        //console.log(`${target} is invalid!`);
         createBtn.toggleAttribute('disabled');
         createBtn.hasAttribute('disabled');
     };
-    //console.log(target.validity.valid);
-} //TBD
+};
 
 //controls.forEach(input => input.addEventListener('change', e => checkField(e.currentTarget)));
 controls.forEach(input => input.addEventListener('change', () => inputValues.checkInputs())); //enable when function works properly
@@ -134,7 +111,6 @@ function createGraph() {
     
     for (let i = 0; i <= bars; i++) {
         createBar(i);
-        //console.log(`year ${i}: ${inputValues.getResult(i)}`);
         barValues.push(inputValues.getResult(i));
     };
     for (let i = 0; i <= bars; i++) {
@@ -142,7 +118,7 @@ function createGraph() {
     };
 
     showResult();
-}
+};
 
 function createBar(index) {
     //create the bar
@@ -158,7 +134,7 @@ function createBar(index) {
     newDiv.appendChild(tooltip);
 
     graphContainer.appendChild(newDiv);
-}
+};
 
 function setBarParams(index, values) {
     let bar = document.getElementById(`bar-${index}`);
@@ -171,24 +147,9 @@ function setBarParams(index, values) {
 
     let infobox = document.getElementById(`tooltip-${index}`); //named infobox here to prevent any possible collisions
     infobox.textContent = `Year ${index}, balance: \$${Math.round(values[index])}`;
-}
+};
 
 function showResult() {
     let roundedResult = (Number.parseInt(inputValues.result * 100))/100; //round to 2 decimals
     resultText.textContent = `\$${roundedResult}`;
 };
-
-
-
-/* function calculateFinal(balance, duration, contribution, interest, interval) {
-    let result = 0;
-    if (interval === "monthly") {
-        for (let i = 0; i<duration; i++) {
-            balance = balance + contribution;
-            result = balance + (balance * (interest / 100));
-            balance = result;
-        };
-        return result;
-    };
-};
-console.log(calculateFinal(inputValues.getValues())); */
