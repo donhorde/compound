@@ -56,16 +56,12 @@ const inputValues = {
     },
 
     checkInputs: function() {
-        
-        const focusInvalidElement = element => {
-            element.focus({ focusVisible: true });
-            createBtn.setAttribute('disabled', "");
-        };
 
         if (![...controls].every((item) => item.validity.valid)) {
             controls.forEach(function(item) {
                 if(!item.validity.valid) {
-                    focusInvalidElement(item);        
+                    item.focus({ focusVisible: true });
+                    createBtn.setAttribute('disabled', "");    
                 };
             })
             } else {
@@ -93,7 +89,7 @@ function checkField(target) {
 };
 
 //controls.forEach(input => input.addEventListener('change', e => checkField(e.currentTarget)));
-controls.forEach(input => input.addEventListener('change', () => inputValues.checkInputs())); //enable when function works properly
+controls.forEach(input => input.addEventListener('change', () => inputValues.checkInputs()));
 
 createBtn.addEventListener('click', () => createGraph());
 
