@@ -32,9 +32,11 @@ button:hover {
     box-shadow: 0px 2px 2px 0px hsl(212, 45%, 80%);
 }
 
-input:out-of-range {
+input:out-of-range, input:out-of-range:focus {
     border: 2px solid red;
     color: red;
+    outline: none;
+    border-radius: 3px;
 }
 
 .result-text {
