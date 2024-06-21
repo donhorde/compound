@@ -7,7 +7,6 @@ body {
     text-align: center;
     margin: 0;
     background-color: hsl(212, 45%, 89%);
-    transition: background-color 0.5s;
 }
 h1 {
     font-weight: 700;
@@ -62,10 +61,12 @@ input:out-of-range, input:out-of-range:focus {
     height: 0%;
     background-color: aquamarine;
     transition: height 1s;
+    transition: background-color 0.5s;
 }
 
 .bar:hover {
     background-color: aqua;
+    transition: background-color 0.5s;
 }
 
 .main-box {
@@ -74,8 +75,9 @@ input:out-of-range, input:out-of-range:focus {
     align-items: center;
     flex-direction: column;
     background-color: whitesmoke;
-    width: 35rem;
-    height: 30rem;
+    max-width: 35rem;
+    max-height: 35rem;
+    margin: 20px;
     padding: 15px;
     border-radius: 15px;
     box-shadow: 0px 5px 20px 0px hsl(212, 45%, 80%);
@@ -95,20 +97,21 @@ input:out-of-range, input:out-of-range:focus {
 .controls {
     padding: 0.2rem;
     display: flex;
-    flex-grow: 1;
+    flex-grow: 1 auto;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.grid {
+/* currently unused */
+/* .grid {
     display: flex;
     flex-wrap: wrap;
     width: 20rem;
     height: 20rem;
     margin: 1rem;
     background-color: whitesmoke;
-}
+} */
 
 /* .tooltip {
     position: relative;
