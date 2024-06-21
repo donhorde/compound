@@ -57,12 +57,12 @@ const inputValues = {
 
     checkInputs: function() {
 
-        if (![...controls].every((item) => item.validity.valid)) {
+        if (![...controls].every((item) => (item.validity.valid && item.value !== ''))) {
             controls.forEach(function(item) {
-                if(!item.validity.valid) {
+                if(!item.validity.valid || item.value === '') {
                     item.focus({ focusVisible: true });
                     createBtn.setAttribute('disabled', "");    
-                };
+                }
             })
             } else {
                 if (createBtn.hasAttribute('disabled')) {
