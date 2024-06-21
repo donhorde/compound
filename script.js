@@ -15,7 +15,7 @@ const inputValues = {
     duration: 0,
     contribution: 0,
     interest: 0,
-    interval: "yearly",
+    interval: 'yearly',
 
     result: 0,
 
@@ -50,10 +50,11 @@ const inputValues = {
         return this.result;
     },
 
-    getValues: function() {
+    //currently unused, candidate for deletion
+    /* getValues: function() {
         this.refresh();
         return [this.balance, this.duration, this.contribution, this.interest, this.interval];
-    },
+    }, */
 
     checkInputs: function() {
 
@@ -61,7 +62,7 @@ const inputValues = {
             controls.forEach(function(item) {
                 if(!item.validity.valid || item.value === '') {
                     item.focus({ focusVisible: true });
-                    createBtn.setAttribute('disabled', "");    
+                    createBtn.setAttribute('disabled', '');    
                 }
             })
             } else {
@@ -73,7 +74,7 @@ const inputValues = {
         //aim = to check if all inputs are valid; if an invalid input is encountered,
         //disable createButton & shift focus to invalid element;
         //if all inputs are valid, graph can be created
-    }
+    },
 };
 
 window.onload = () => {
