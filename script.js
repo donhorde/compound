@@ -28,7 +28,7 @@ const inputValues = {
     },
 
     getResult: function(year) {
-        this.refresh();
+        //this.refresh();
 
         //formula ver 2 - with yearly contributions:
             /*
@@ -65,11 +65,12 @@ const inputValues = {
                     createBtn.setAttribute('disabled', '');    
                 }
             })
-            } else {
-                if (createBtn.hasAttribute('disabled')) {
-                    createBtn.removeAttribute('disabled');
-                }
-            };
+
+        } else {
+            if (createBtn.hasAttribute('disabled')) {
+                createBtn.removeAttribute('disabled');
+            }
+        };
 
         //aim = to check if all inputs are valid; if an invalid input is encountered,
         //disable createButton & shift focus to invalid element;
@@ -78,6 +79,7 @@ const inputValues = {
 };
 
 window.onload = () => {
+    inputValues.refresh();
     inputValues.getResult();
     createGraph();
 };
