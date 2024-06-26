@@ -50,12 +50,6 @@ const inputValues = {
         return this.result;
     },
 
-    //currently unused, candidate for deletion
-    /* getValues: function() {
-        this.refresh();
-        return [this.balance, this.duration, this.contribution, this.interest, this.interval];
-    }, */
-
     checkInputs: function() {
 
         if (![...controls].every((item) => (item.validity.valid && item.value !== ''))) {
@@ -63,13 +57,13 @@ const inputValues = {
                 if(!item.validity.valid || item.value === '') {
                     item.focus({ focusVisible: true });
                     createBtn.setAttribute('disabled', '');    
-                }
+                };
             })
 
         } else {
             if (createBtn.hasAttribute('disabled')) {
                 createBtn.removeAttribute('disabled');
-            }
+            };
         };
 
         //aim = to check if all inputs are valid; if an invalid input is encountered,
@@ -80,7 +74,6 @@ const inputValues = {
 
 window.onload = () => {
     inputValues.refresh();
-    inputValues.getResult();
     createGraph();
 };
 
@@ -91,7 +84,6 @@ function checkField(target) {
     };
 };
 
-//controls.forEach(input => input.addEventListener('change', e => checkField(e.currentTarget)));
 controls.forEach(input => input.addEventListener('change', () => inputValues.checkInputs()));
 
 createBtn.addEventListener('click', () => createGraph());
