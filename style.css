@@ -105,6 +105,7 @@ input:out-of-range, input:out-of-range:focus, input:invalid {
     grid-template-rows: 33% 33% 33%; */
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
 }
 
 .interactive-wrapper {
