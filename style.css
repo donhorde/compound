@@ -29,6 +29,7 @@ button {
     padding: 8px 16px;
     border: 1px solid grey;
     cursor: pointer;
+    margin: 10px auto;
 }
 
 button:hover {
@@ -49,6 +50,7 @@ input:out-of-range, input:out-of-range:focus, input:invalid {
 .graph-container {
     padding: 20px 5px 0px 5px;
     background-color: white;
+    min-width: 420px;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -77,7 +79,6 @@ input:out-of-range, input:out-of-range:focus, input:invalid {
     align-items: center;
     flex-direction: column;
     background-color: whitesmoke;
-    max-width: 35rem;
     max-height: 35rem;
     margin: 20px;
     padding: 15px;
@@ -98,6 +99,7 @@ input:out-of-range, input:out-of-range:focus, input:invalid {
 
 .controls {
     padding: 0.2rem;
+    width: 200px;
     display: flex;
     flex-wrap: wrap;
     /* grid-template-columns: 50% 50%;
